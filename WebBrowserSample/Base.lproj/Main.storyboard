@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eUb-rv-LGe">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="A3C-w7-dvB">
+            <objects>
+                <navigationController toolbarHidden="NO" id="eUb-rv-LGe" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HAd-Yz-2gP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="10F-bi-nZu">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <gestureRecognizers/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="B73-TD-yKw" kind="relationship" relationship="rootViewController" id="GSh-er-BpJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EXY-gF-QKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="337"/>
+        </scene>
+        <!--Web Browser View Controller-->
+        <scene sceneID="2Z1-c2-FdL">
+            <objects>
+                <viewController id="B73-TD-yKw" customClass="CLMWebBrowserViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qYU-Du-AJk"/>
+                        <viewControllerLayoutGuide type="bottom" id="0qs-GD-H5L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R26-5s-TbT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem enabled="NO" image="back" id="TUF-Ua-gBK">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="B73-TD-yKw" id="0UC-Ka-8cI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="X3p-av-sZv"/>
+                        <barButtonItem enabled="NO" image="forward" id="dLE-X5-WTq">
+                            <connections>
+                                <action selector="didTapForwardButton:" destination="B73-TD-yKw" id="LUh-2g-HiW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="ete-i3-f08"/>
+                        <barButtonItem enabled="NO" systemItem="refresh" id="aEa-rF-QF3">
+                            <connections>
+                                <action selector="didTapReloadButton:" destination="B73-TD-yKw" id="xIX-Tl-eg7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="gWC-cj-poJ"/>
+                        <barButtonItem enabled="NO" systemItem="stop" id="91K-V5-fRE">
+                            <connections>
+                                <action selector="didTapStopButton:" destination="B73-TD-yKw" id="bIz-2m-3jg"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="Rig-gx-CTa"/>
+                    <connections>
+                        <outlet property="backButton" destination="TUF-Ua-gBK" id="ovy-pM-FcT"/>
+                        <outlet property="forwardButton" destination="dLE-X5-WTq" id="dEZ-8K-sRc"/>
+                        <outlet property="reloadButton" destination="aEa-rF-QF3" id="E3p-bZ-SeW"/>
+                        <outlet property="stopButton" destination="91K-V5-fRE" id="8W1-YC-jQT"/>
+                        <segue destination="wq7-sz-VYY" kind="modal" identifier="showBackListSegue" id="1hR-OT-Mjo"/>
+                        <segue destination="wq7-sz-VYY" kind="modal" identifier="showForwardListSegue" id="AVN-bb-JUS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Soa-py-Bn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="337"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="ASx-NO-M9q">
+            <objects>
+                <tableViewController id="fCg-IC-YvQ" customClass="CLMBackForwardListViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="T0M-E6-Jll">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" textLabel="rsU-O6-1B0" detailTextLabel="cST-R7-Oyh" style="IBUITableViewCellStyleSubtitle" id="ypW-4p-rv3">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ypW-4p-rv3" id="jtR-2u-Vus">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rsU-O6-1B0">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cST-R7-Oyh">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="QJ8-AD-e4K" kind="unwind" identifier="unwindToWebBrowserWhileSelectingItem" unwindAction="unwindToWebBrowser:" id="xwv-wR-t9v"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fCg-IC-YvQ" id="Qnx-jm-je4"/>
+                            <outlet property="delegate" destination="fCg-IC-YvQ" id="f83-00-yGz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="History" id="Qb4-uf-dR3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="8cg-bv-z8z">
+                            <connections>
+                                <segue destination="QJ8-AD-e4K" kind="unwind" identifier="unwindToWebBrowser" unwindAction="unwindToWebBrowser:" id="M5p-Mi-044"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJe-aX-PPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QJ8-AD-e4K" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1255" y="337"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qm9-M4-hCD">
+            <objects>
+                <navigationController id="wq7-sz-VYY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pxq-L6-Uc3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fCg-IC-YvQ" kind="relationship" relationship="rootViewController" id="IOB-7y-q7D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GFL-YP-osi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="337"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="24" height="24"/>
+        <image name="forward" width="24" height="24"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="AVN-bb-JUS"/>
+    </inferredMetricsTieBreakers>
+</document>
